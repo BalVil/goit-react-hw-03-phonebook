@@ -1,0 +1,38 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 8px;
+
+  border: 1px solid #ccc;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px;
+}
+:global(input) {
+  display: inline-block;
+  padding: 4px;
+  margin-bottom: 20px;
+
+  line-height: 1.4em;
+  border: none;
+  outline: 1px solid #ccc;
+  border-radius: 4px;
+}
+:global(input:focus) {
+  box-shadow: inset 0 0 4px rgb(0 0 0 / 8%), 0 0 8px rgba(16, 141, 243, 0.9);
+}
+:global(button) {
+  display: block;
+  padding: 4px 8px;
+
+  background-color: transparent;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+:global(button:active) {
+  background-color: #1e90ff;
+}
+.label__form {
+  margin-bottom: 4px;
+}
