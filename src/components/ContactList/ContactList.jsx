@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 
-export const ContactList = ({ contacts }) => {
+export const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <ul>
       {contacts.map(({ id, name, number }) => {
@@ -9,7 +9,9 @@ export const ContactList = ({ contacts }) => {
           <li key={id} className={css.contact}>
             <span className={css.name}>{name}:</span>
             <span className={css.number}>{number}</span>
-            <button type="button">Delete</button>
+            <button type="button" onClick={() => onDeleteContact(id)}>
+              Delete
+            </button>
           </li>
         );
       })}
@@ -24,4 +26,5 @@ ContactList.propTypes = {
       number: PropTypes.string.isRequired,
     })
   ),
+  onDeleteContact: PropTypes.func.isRequired,
 };

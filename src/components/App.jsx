@@ -46,7 +46,11 @@ export class App extends Component {
     );
   };
 
-  deleteContact = () => {};
+  deleteContact = id => {
+    this.setState(({ contacts }) => ({
+      contacts: contacts.filter(contact => contact.id !== id),
+    }));
+  };
 
   render() {
     const { filter } = this.state;
@@ -62,7 +66,10 @@ export class App extends Component {
         <section className={css.section}>
           <h2 className={css.title}>Contacts</h2>
           <Filter value={filter} onChange={this.changeFilter} />
-          <ContactList contacts={visibleContacts} />
+          <ContactList
+            contacts={visibleContacts}
+            onDeleteContact={this.deleteContact}
+          />
         </section>
       </div>
     );
