@@ -2,9 +2,9 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import 'modern-normalize';
 import css from './App.module.css';
-import { ContactForm } from 'components/ContactForm';
-import { ContactList } from 'components/ContactList';
-import { Filter } from 'components/Filter';
+import { ContactForm } from 'components/ContactForm/ContactForm';
+import { ContactList } from 'components/ContactList/ContactList';
+import { Filter } from 'components/Filter/Filter';
 
 export class App extends Component {
   state = {
@@ -23,17 +23,14 @@ export class App extends Component {
       name,
       number,
     };
-    if (this.checkContactInList(name)) {
-      this.setState(({ contacts }) => ({ contacts: [contact, ...contacts] }));
-    }
-  };
 
-  checkContactInList = newName => {
     const { contacts } = this.state;
-    if (contacts.findIndex(p => p.name === newName) !== -1) {
-      alert(`${newName} is already in contacts `);
+    if (contacts.findIndex(p => p.name === name) !== -1) {
+      alert(`${name} is already in contacts `);
       return;
     }
+
+    this.setState(({ contacts }) => ({ contacts: [contact, ...contacts] }));
   };
 
   changeFilter = e => {
